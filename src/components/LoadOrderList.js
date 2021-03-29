@@ -1,13 +1,21 @@
 import loadOrder from './loadOrderData';
+import { useState } from 'react';
 
-function LoadOrderList(){
+function LoadOrderList() {
+    const [list] = useState(loadOrder)
     return (
         <div id="loadOrderList_wrapper">
-            <h1>Fallout: New Vegas <small>Load Order</small></h1>
-            {loadOrder.map((loadItem, index) => (
+            <div id="loadOrder_header">
+                <h1>Fallout: New Vegas <small>Load Order</small></h1>
+                <h2>Featuring A World of Pain and Fallout: The Frontier</h2>
+                <p>{list.length} Mods not including those merged into bashed patch.</p>
+                <p>Mods are listed in load order.</p>
+            </div>
+            {list.map((loadItem, index) => (
                 <div className="loadOrderItem" key={index} >
+                <hr/>
                     <span className="textWrapper">
-                        <p>{loadItem}</p>
+                        <p>{index + 1}) {loadItem}</p>
                     </span>
                 </div>
             ))}
